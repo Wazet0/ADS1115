@@ -133,10 +133,10 @@ class ADS1115:
         self._set_thresh(_ADDR_POINT_HI_THRESH, val)
         
     def set_lo_thresh_mv(self, val):
-        self._set_thresh(_ADDR_POINT_LO_THRESH, val / 1000)
+        self.set_lo_thresh_v(val / 1000)
         
     def set_hi_thresh_mv(self, val):
-        self._set_thresh(_ADDR_POINT_HI_THRESH, val / 1000)
+        self.set_hi_thresh_v(val / 1000)
     
     def _config(self, os, mux, pga, mode, dr, cm, cp, cl, cq):
         cmd = bytearray(3)
@@ -162,3 +162,4 @@ class ADS1115:
         cmd[1] = b >> 8
         cmd[2] = b & 0x00FF
         self._write(cmd)
+        self._write([_ADDR_POINT_CONVERSION])

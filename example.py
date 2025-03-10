@@ -1,5 +1,5 @@
 import ads1115
-from machine import I2C, Pin
+from machine import I2C
 
 i2c = I2C(0, freq=1_000_000)
 ads = ads1115.ADS1115(i2c, pga=ads1115.PGA_6_144)
